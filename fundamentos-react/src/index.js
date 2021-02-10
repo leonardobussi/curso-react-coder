@@ -1,5 +1,12 @@
 import ReactDOM from "react-dom"
+import React from 'react'
 
-const el = document.getElementById("root")
+import './index.css'
+import Primeiro from "./components/basico/Primeiro"
 
-ReactDOM.render('ola mundo', el)
+ReactDOM.render(
+  <div>
+    <Primeiro/>
+  </div>,
+  document.getElementById("root")
+)
