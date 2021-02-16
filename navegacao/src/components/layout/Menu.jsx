@@ -8,10 +8,16 @@ const Menu = (props) =>  {
       <nav>
         <ul>
           <li>
-            <Link to="/home">Início</Link>
+            <Link to="/">Início</Link>
           </li>
           <li>
             <Link to="/about" >Sobre</Link>
+          </li>
+          <li>
+            <Link to="/param/leo">Param</Link>
+          </li>
+          <li>
+            <Link to="/naovinada">não vi nada</Link>
           </li>
         </ul>
       </nav>
