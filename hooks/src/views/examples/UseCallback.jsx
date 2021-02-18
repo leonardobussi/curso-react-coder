@@ -1,5 +1,6 @@
-import React, { useState } from 'react'
+import React, { useState, useCallback } from 'react'
 import PageTitle from '../../components/layout/PageTitle'
+import UseCallbackButtons from './UseCallbackButtons'
 
 
 
@@ -8,9 +9,13 @@ const UseCallback = (props) => {
     const [count, setCount] = useState(0)
 
 
-    function inc (delta){
-        return setCount(count + delta)
-    }
+   const inc = useCallback(function(delta){
+         setCount(curr => curr + delta)
+    }, [setCount])
+
+    const zera = useCallback(function(){
+        setCount(curr => curr - curr)
+    }, [setCount])
 
 
     return (
@@ -21,36 +26,10 @@ const UseCallback = (props) => {
             />
             <div className="center">
                 <span className="text">{count}</span>
-                <div>
-                    <button 
-                        className="btn"
-                        onClick={() => inc(6)}  
-                    >+6
-                    </button>
-
-                    <button 
-                        className="btn"
-                        onClick={() => inc(12)}  
-                    >+12
-                    </button>
-
-                    <button 
-                        className="btn"
-                        onClick={() => inc(18)}  
-                    >+18
-                    </button>
-
-                    <button 
-                        className="btn"
-                        onClick={() => setCount(count - count)}  
-                    >zerar
-                    </button>
-
-
-                </div>
+                <UseCallbackButtons inc={inc} zera={zera} />
             </div>
         </div>
     )
 }
 
-export default UseCallback
+export default  React.memo(UseCallback)
